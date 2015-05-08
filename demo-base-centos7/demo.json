@@ -1,0 +1,39 @@
+{
+	"builders": [
+		{
+			"type": "qemu",
+			"iso_url": "/jwrFs/Software/PC/OS/CentOS-7.0-1406-x86_64-DVD.iso",
+			"iso_checksum": "154ba47b7a37e52e0100310c3aeb8f9d9daf4806",
+			"iso_checksum_type": "sha1",
+			"headless": true,
+			"ssh_wait_timeout": "90m",
+			"ssh_username": "root",
+			"ssh_password": "password",
+			"disk_size": 10000,
+			"qemuargs": [["-m", "2048M"]],
+			"boot_wait": "5s",
+			"qemuargs": [ "-serial", "file:serial.log" ],
+			"http_directory": "./",
+			"boot_command":
+			[
+				"<tab><up> append console=ttyS0,115200n8 rd.live.check=0 text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/demo.ks<enter><wait>"
+			]
+		}
+	],
+	"provisioners": [
+		{
+			"type": "shell",
+			"inline": ["ip a; sleep 1000"]
+		},
+		{
+			"type": "file",
+			"source": "demo.pp",
+			"destination": "/root/demo.pp"
+		},
+		{
+			"type": "puppet-masterless",
+			"manifest_file": "demo.pp"
+		}
+
+	]
+}
