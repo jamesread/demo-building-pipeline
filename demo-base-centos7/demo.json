@@ -1,8 +1,11 @@
 {
+	"variables": {
+		"ISO_DIRECTORY": ""
+	},
 	"builders": [
 		{
 			"type": "qemu",
-			"iso_url": "/jwrFs/Software/PC/OS/CentOS-7.0-1406-x86_64-DVD.iso",
+			"iso_url": "{{user `ISO_DIRECTORY` }}/centos7.iso",
 			"iso_checksum": "154ba47b7a37e52e0100310c3aeb8f9d9daf4806",
 			"iso_checksum_type": "sha1",
 			"headless": true,
@@ -21,10 +24,6 @@
 		}
 	],
 	"provisioners": [
-		{
-			"type": "shell",
-			"inline": ["ip a; sleep 1000"]
-		},
 		{
 			"type": "file",
 			"source": "demo.pp",

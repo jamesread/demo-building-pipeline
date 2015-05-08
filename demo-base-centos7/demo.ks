@@ -23,7 +23,6 @@ vim-enhanced
 git
 wget
 ruby
-htop
 %end
 
 %post

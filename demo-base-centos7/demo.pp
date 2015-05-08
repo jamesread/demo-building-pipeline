@@ -1,6 +1,7 @@
 package { [ 
 	"httpd",
-	"mysqld" 
+	"mariadb-server" 
 	] :
-	ensure => installed
+	ensure => installed,
+	allow_virtual => true
 }
