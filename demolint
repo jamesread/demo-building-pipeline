@@ -1,0 +1,78 @@
+#!/bin/python
+
+import argparse
+import os
+from os.path import isdir
+import json
+
+parser = argparse.ArgumentParser();
+parser.add_argument("-d", "--demo", required = False, default = False)
+args = parser.parse_args()
+
+
+def red(txt):
+	return "\033[31m" + txt + "\033[0m"
+
+def green(txt):
+	return "\033[32m" + txt + "\033[0m"
+
+def test(result, comment, commentForFail = None):
+	if result:
+		resultString = green("PASS")
+	else:
+		if commentForFail != None:
+			comment = commentForFail
+
+		resultString = red("FAIL")
+	
+	print "[ ", resultString, " ] ", comment
+
+	return result
+
+def testFileExists(filename, filePurpose = "file"):
+	if os.path.isfile(filename):
+		return test(True, "Found " + filePurpose + ": " + filename)
+	else:
+		return test(False, "The file '" + filename + "' is required.")
+
+def lintDemoConfig(demoConfig):
+	try: 
+		test(demoConfig['builders'][0]['type'] == "qemu", 
+			"The first builder is a 'qemu' builder", 
+			"The first builder was found, but it needs to be of 'qemu' type"
+		)
+	except: 
+		test(False, "No builder was found!")
+
+def lintDemoJson(demoDirectory):	
+	packerConfigFile = file(os.path.join(demoDirectory, "demo.json"), 'r')
+
+	try:
+		demoJson = json.load(packerConfigFile)
+
+		test(True, "Demo JSON is valid.")
+
+		lintDemoConfig(demoJson)
+	except Exception as e:
+		test(False, "Demo config exists, but could not be loaded, is it valid JSON?")
+		print e
+
+	packerConfigFile.close()
+
+def lintDemo(demoDirectory):
+	print "Demo:", demoDirectory
+
+	if testFileExists(os.path.join(demoDirectory, "demo.json"), "packer config file"):
+		lintDemoJson(demoDirectory)
+
+	print
+
+print "demolint"
+print "-" * 3
+
+if args.demo != False:
+	lintDemo(args.demo)
+else:
+	for f in os.listdir(os.getcwd()):
+		if isdir(f) and f[0] != ".":
+			lintDemo(f)
