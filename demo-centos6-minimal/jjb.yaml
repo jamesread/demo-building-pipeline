@@ -1,4 +1,4 @@
 - project:
-    name: demo-base-centos6
+    name: demo-centos6-minimal
     jobs:
         - build-{name}
