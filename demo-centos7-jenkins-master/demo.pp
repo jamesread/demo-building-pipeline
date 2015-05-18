@@ -20,6 +20,6 @@ service { "firewalld":
 }
 
 service { "jenkins": 
-	ensure => started,
+	ensure => running,
 	enable => true
 }
