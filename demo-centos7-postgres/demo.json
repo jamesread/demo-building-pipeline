@@ -6,7 +6,7 @@
 		{
 			"type": "qemu",
 			"disk_image": true,
-			"iso_url": "{{user `ISO_DIRECTORY`}}/demo-centos7.qcow2"
+			"iso_url": "{{user `ISO_DIRECTORY`}}/demo-centos7.qcow2",
 			"iso_checksum_type": "none",
 			"ssh_wait_timeout": "30m",
 			"ssh_username": "root",
@@ -17,7 +17,6 @@
 			"http_directory": "./",
 			"headless": true,
 			"qemuargs": [ "-nographic" ],
-			""
 			"boot_command":
 			[
 				"<enter>"
