@@ -28,7 +28,7 @@
         - ssh:
             site: 'demobuilder-master'
             source: '{name}/output-qemu/*.qcow2'
-            target: '/pub/demos/'
+            target: '{name}'
             use-pty: true
             fail-on-error: true
 
