@@ -24,6 +24,8 @@ git
 wget
 ruby
 gnome-desktop3
+gedit
+gnome-terminal
 %end
 
 %post
