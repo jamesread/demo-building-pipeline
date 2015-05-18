@@ -1,5 +1,5 @@
 - project:
-    name: demo-fedora21server-base
+    name: demo-fedora21server-minimal
     jobs:
         - build-{name}
 
