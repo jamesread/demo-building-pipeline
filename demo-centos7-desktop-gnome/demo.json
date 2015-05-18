@@ -5,7 +5,7 @@
 	"builders": [
 		{
 			"type": "qemu",
-			"disk_image": true
+			"disk_image": true,
 			"iso_url": "{{user `ISO_DIRECTORY` }}/demo-centos7.qcow2",
 			"iso_checksum": "",
 			"iso_checksum_type": "none",
