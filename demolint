@@ -9,6 +9,7 @@ parser = argparse.ArgumentParser();
 parser.add_argument("-d", "--demo", required = False, default = False)
 args = parser.parse_args()
 
+everythingOkay = True
 
 def red(txt):
 	return "\033[31m" + txt + "\033[0m"
@@ -24,6 +25,8 @@ def test(result, comment, commentForFail = None):
 			comment = commentForFail
 
 		resultString = red("FAIL")
+
+		everythingOkay = False
 	
 	print "[ ", resultString, " ] ", comment
 
@@ -76,3 +79,6 @@ else:
 	for f in os.listdir(os.getcwd()):
 		if isdir(f) and f[0] != ".":
 			lintDemo(f)
+
+if not everythingOkay:
+	sys.exit(1)

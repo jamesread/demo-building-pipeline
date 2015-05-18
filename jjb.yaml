@@ -23,3 +23,23 @@
             /opt/packer/packer build -var 'ISO_DIRECTORY=/isos' demo.json
     wrappers:
         - ansicolor            
+
+- job: 
+    name: demolint
+    project-type: freestyle
+    
+    logrotate: 
+        numToKeep: 3
+
+    scm:
+        - git:
+            skip-tag: false
+            url: https://github.com/jamesread/demo-vm-images.git
+            triggers:
+                - pollscm: '@hourly'
+    builders:
+        - shell: |
+            ./demolint
+
+    wrappers:
+        - ansicolor
