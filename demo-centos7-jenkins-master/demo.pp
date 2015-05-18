@@ -16,10 +16,10 @@ package { [
 
 service { "firewalld": 
 	ensure => stopped,
-	enabled => false
+	enable => false
 }
 
 service { "jenkins": 
 	ensure => started,
-	enabled => true
+	enable => true
 }
