@@ -6,8 +6,8 @@
 		{
 			"type": "qemu",
 			"iso_url": "{{user `ISO_DIRECTORY` }}/centos7.iso",
-			"iso_checksum": "99e450fb1b22d2e528757653fcbf5fdc",
-			"iso_checksum_type": "md5",
+			"iso_checksum": "",
+			"iso_checksum_type": "none",
 			"headless": true,
 			"ssh_wait_timeout": "90m",
 			"ssh_username": "root",
