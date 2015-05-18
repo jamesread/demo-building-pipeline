@@ -50,6 +50,14 @@ def lintDemoConfig(demoConfig):
 	except: 
 		test(False, "No builder was found!")
 
+	try:
+		test(demoConfig['builders'][0]['iso_checksum_type'] == "none",
+			"The pointless ISO checksum is disabled.",
+			"The pointless ISO checksum is enabled, instead set it to 'none'. "
+		)
+	except:
+		test(False, "Could not determine the ISO checksum type.")
+
 def lintDemoJson(demoDirectory):	
 	packerConfigFile = file(os.path.join(demoDirectory, "demo.json"), 'r')
 
