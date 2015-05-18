@@ -5,7 +5,7 @@
 	"builders": [
 		{
 			"type": "qemu",
-			"iso_url": "{{user `ISO_DIRECTORY` }}/centos6.iso",
+			"iso_url": "{{user `ISO_DIRECTORY` }}/CentOS-6.6-x86_64-bin-DVD1.iso",
 			"iso_checksum": "",
 			"iso_checksum_type": "none",
 			"headless": true,
