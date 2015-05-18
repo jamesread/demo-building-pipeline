@@ -1,0 +1,7 @@
+- project: 
+    name: demo-centos7-condor-controller
+
+    jobs: 
+        - 'build-{name}'
+
+
