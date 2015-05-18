@@ -67,6 +67,15 @@ def lintDemoConfig(demoConfig):
 	except:
 		test(False, "Could not determine the ISO checksum type.")
 
+	try:
+		test(demoConfig['builders'][0]['ssh_wait_timeout'] == "20m",
+			"The SSH timeout is reasonable.",
+			"The SSH timeout should be '20m'",
+		)
+	except:
+		test(False, "The ssh_wait_timeout is not specified in the Qemu builder")
+		
+
 	lintQemuGraphics(demoConfig)
 
 def lintDemoJson(demoDirectory):	

@@ -9,7 +9,7 @@
 			"iso_checksum": "",
 			"iso_checksum_type": "none",
 			"headless": true,
-			"ssh_wait_timeout": "90m",
+			"ssh_wait_timeout": "30m",
 			"ssh_username": "root",
 			"ssh_password": "password",
 			"disk_size": 10000,
