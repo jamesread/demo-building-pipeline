@@ -4,6 +4,7 @@ import argparse
 import os
 from os.path import isdir
 import json
+import sys
 
 parser = argparse.ArgumentParser();
 parser.add_argument("-d", "--demo", required = False, default = False)
@@ -18,6 +19,8 @@ def green(txt):
 	return "\033[32m" + txt + "\033[0m"
 
 def test(result, comment, commentForFail = None):
+	global everythingOkay
+
 	if result:
 		resultString = green("PASS")
 	else:
