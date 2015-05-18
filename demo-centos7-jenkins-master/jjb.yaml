@@ -1,5 +1,5 @@
 - project: 
-    name: demo-centos7-condor-controller
+    name: demo-centos7-jenkins-master
 
     jobs: 
         - 'build-{name}'
