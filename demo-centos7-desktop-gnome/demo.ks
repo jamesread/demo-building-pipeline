@@ -23,7 +23,7 @@ vim-enhanced
 git
 wget
 ruby
-gnome-desktop
+gnome-desktop3
 %end
 
 %post
