@@ -1,6 +1,9 @@
 package { [ 
 	"httpd",
-	"mariadb-server" 
+	"mariadb-server",
+	"corosync",
+	"pacemaker",
+	"pcs"
 	] :
 	ensure => installed,
 	allow_virtual => true
