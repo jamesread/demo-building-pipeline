@@ -41,6 +41,15 @@ def testFileExists(filename, filePurpose = "file"):
 	else:
 		return test(False, "The file '" + filename + "' is required.")
 
+def lintQemuGraphics(demoConfig):
+	try:
+		test("-nographic" in demoConfig['builders'][0]['qemuargs'],
+			"Qemu args has -nographics for serial console.",
+			"-nographics should be in the qemu args"
+			)
+	except:
+		test(False, "No Qemu args have been specified, wont be able to monitor the console")
+
 def lintDemoConfig(demoConfig):
 	try: 
 		test(demoConfig['builders'][0]['type'] == "qemu", 
@@ -57,6 +66,8 @@ def lintDemoConfig(demoConfig):
 		)
 	except:
 		test(False, "Could not determine the ISO checksum type.")
+
+	lintQemuGraphics(demoConfig)
 
 def lintDemoJson(demoDirectory):	
 	packerConfigFile = file(os.path.join(demoDirectory, "demo.json"), 'r')
