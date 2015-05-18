@@ -15,7 +15,7 @@
 			"disk_size": 10000,
 			"qemuargs": [["-m", "2048M"]],
 			"boot_wait": "10s",
-			"qemuargs": [ "-serial", "file:serial.log" ],
+			"qemuargs": [ "-nographic" ],
 			"http_directory": "./",
 			"boot_command":
 			[
