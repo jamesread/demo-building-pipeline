@@ -5,7 +5,8 @@
 	"builders": [
 		{
 			"type": "qemu",
-			"iso_url": "{{user `ISO_DIRECTORY` }}/centos7.iso",
+			"disk_image": true
+			"iso_url": "{{user `ISO_DIRECTORY` }}/demo-centos7.qcow2",
 			"iso_checksum": "",
 			"iso_checksum_type": "none",
 			"headless": true,
@@ -19,7 +20,7 @@
 			"http_directory": "./",
 			"boot_command":
 			[
-				"<tab><up> append console=ttyS0,115200n8 rd.live.check=0 text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/demo.ks<enter><wait>"
+				"<enter>"
 			]
 		}
 	],

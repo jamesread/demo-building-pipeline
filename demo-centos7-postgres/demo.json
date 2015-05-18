@@ -8,15 +8,15 @@
 			"disk_image": true,
 			"iso_url": "{{user `ISO_DIRECTORY`}}/demo-centos7.qcow2",
 			"iso_checksum_type": "none",
+			"headless": true,
 			"ssh_wait_timeout": "30m",
 			"ssh_username": "root",
 			"ssh_password": "password",
 			"disk_size": 10000,
 			"qemuargs": [["-m", "2048M"]],
 			"boot_wait": "10s",
-			"http_directory": "./",
-			"headless": true,
 			"qemuargs": [ "-nographic" ],
+			"http_directory": "./",
 			"boot_command":
 			[
 				"<enter>"
