@@ -1,0 +1,5 @@
+- project:
+    name: demo-base-fedora21server
+    jobs:
+        - build-{name}
+

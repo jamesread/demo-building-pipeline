@@ -1,0 +1,25 @@
+- job-template:
+    name: build-{name}
+    project-type: freestyle
+    node: has-kvm
+    logrotate:
+        numToKeep: 3
+
+    scm:
+        - git:
+            skip-tag: false
+            url: https://github.com/jamesread/demo-vm-images.git
+            triggers:
+                - pollscm: '@hourly'
+    builders:
+        - shell: |
+            echo `hostname`
+            export PACKER_LOG=yes
+            #export PACKER_LOG_FILE={name}/packer.log
+            export PATH=/opt/packer/:$PATH
+
+            cd {name}
+            rm -rf output-qemu
+            /opt/packer/packer build -var 'ISO_DIRECTORY=/isos' demo.json
+    wrappers:
+        - ansicolor            

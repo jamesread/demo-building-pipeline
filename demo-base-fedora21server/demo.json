@@ -1,0 +1,38 @@
+{
+	"variables": {
+		"ISO_DIRECTORY": ""
+	},
+	"builders": [
+		{
+			"type": "qemu",
+			"iso_url": "{{user `ISO_DIRECTORY` }}/fedora21server.iso",
+			"iso_checksum": "none",
+			"iso_checksum_type": "md5",
+			"headless": true,
+			"ssh_wait_timeout": "90m",
+			"ssh_username": "root",
+			"ssh_password": "password",
+			"disk_size": 10000,
+			"qemuargs": [["-m", "2048M"]],
+			"boot_wait": "5s",
+			"qemuargs": [ "-serial", "file:serial.log" ],
+			"http_directory": "./",
+			"boot_command":
+			[
+				"<tab><up> append console=ttyS0,115200n8 rd.live.check=0 text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/demo.ks<enter><wait>"
+			]
+		}
+	],
+	"provisioners": [
+		{
+			"type": "file",
+			"source": "demo.pp",
+			"destination": "/root/demo.pp"
+		},
+		{
+			"type": "puppet-masterless",
+			"manifest_file": "demo.pp"
+		}
+
+	]
+}

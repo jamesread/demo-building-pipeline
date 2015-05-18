@@ -1,0 +1,7 @@
+- project: 
+    name: demo-base-centos7
+
+    jobs: 
+        - 'build-{name}'
+
+
