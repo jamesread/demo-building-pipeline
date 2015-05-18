@@ -24,6 +24,14 @@
     wrappers:
         - ansicolor            
 
+    publishers:
+        - ssh:
+            site: 'demobuilder-master'
+            source: '{name}/output-qemu/*.qcow2'
+            target: '/pub/demos/'
+            use-pty: true
+            fail-on-error: true
+
 - job: 
     name: demolint
     project-type: freestyle

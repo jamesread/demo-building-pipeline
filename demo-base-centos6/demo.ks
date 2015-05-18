@@ -30,7 +30,7 @@ wget http://www.jwread.com/var/nix/profile.txt -O /root/.bashrc
 %end
 
 %post 
-rpm -U http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+rpm -U http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 yum install puppet -y 
 %end
 
