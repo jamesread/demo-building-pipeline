@@ -31,6 +31,7 @@
             target: '{name}'
             use-pty: true
             fail-on-error: true
+            remove-prefix: '{name}/output-qemu'
 
 - job: 
     name: demolint
