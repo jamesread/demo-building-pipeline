@@ -18,7 +18,7 @@
 			"qemuargs": [ 
 				"-nographic",
 				"-drive",
-				"if=none,cache=unsafe,id=drive0,discard=unmap,file=output-qcow2/disk.qcow2"
+				"if=none\\,cache=unsafe\\,id=drive0\\,discard=unmap\\,file=output-qcow2/disk.qcow2"
 			 ],
 			"http_directory": "./",
 			"vm_name": "demo-centos7-minimal",
