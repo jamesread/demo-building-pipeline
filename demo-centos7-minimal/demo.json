@@ -13,10 +13,15 @@
 			"ssh_username": "root",
 			"ssh_password": "password",
 			"disk_size": 10000,
-			"qemuargs": [["-m", "2048M"]],
 			"boot_wait": "10s",
 			"qemuargs": [ 
 				"-nographic",
+				[
+					"-smp", "2"
+				],
+				[	
+					"-m", "2048M"
+				],
 				[
 					"-device",
 					"virtio-scsi-pci"
