@@ -15,7 +15,11 @@
 			"disk_size": 10000,
 			"qemuargs": [["-m", "2048M"]],
 			"boot_wait": "10s",
-			"qemuargs": [ "-nographic" ],
+			"qemuargs": [ 
+				"-nographic",
+				"-drive",
+				"if=none,cache=unsafe,id=drive0,discard=unmap,file=output-qcow2/disk.qcow2"
+			 ],
 			"http_directory": "./",
 			"vm_name": "demo-centos7-minimal",
 			"boot_command":
