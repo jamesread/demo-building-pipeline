@@ -16,7 +16,11 @@
 			"qemuargs": [["-m", "2048M"]],
 			"boot_wait": "10s",
 			"qemuargs": [ 
-				"-nographic"
+				"-nographic",
+				[
+					"-drive",
+					"if=virtio,cache=unsafe,format=qcow2,discard=unmap,file=output-qemu/demo-centos7-minimal.qcow2"
+				]
 			 ],
 			"http_directory": "./",
 			"vm_name": "demo-centos7-minimal",
