@@ -18,8 +18,12 @@
 			"qemuargs": [ 
 				"-nographic",
 				[
+					"-device",
+					"virtio-scsi-pci"
+				],
+				[
 					"-drive",
-					"if=virtio,cache=unsafe,format=qcow2,discard=unmap,file=output-qemu/demo-centos7-minimal.qcow2"
+					"if=none,cache=unsafe,format=qcow2,discard=unmap,file=output-qemu/demo-centos7-minimal.qcow2"
 				]
 			 ],
 			"http_directory": "./",
