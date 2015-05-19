@@ -16,6 +16,7 @@
 			"qemuargs": [["-m", "2048M"]],
 			"boot_wait": "5s",
 			"qemuargs": [ "-nographic" ],
+			"vm_name": "demo-centos6-minimal",
 			"http_directory": "./",
 			"boot_command":
 			[

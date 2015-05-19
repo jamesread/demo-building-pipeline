@@ -16,6 +16,7 @@
 			"qemuargs": [["-m", "2048M"]],
 			"boot_wait": "10s",
 			"qemuargs": [ "-nographic" ],
+			"vm_name": "demo-centos7-postgres",
 			"http_directory": "./",
 			"boot_command":
 			[

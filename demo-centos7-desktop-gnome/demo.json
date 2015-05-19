@@ -17,6 +17,7 @@
 			"qemuargs": [["-m", "2048M"]],
 			"boot_wait": "10s",
 			"qemuargs": [ "-nographic" ],
+			"vm_name": "demo-centos7-desktop-gnome",
 			"http_directory": "./",
 			"boot_command":
 			[
