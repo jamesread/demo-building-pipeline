@@ -17,10 +17,11 @@
 			"qemuargs": [ 
 				"-nographic",
 				[
-					"-drive",
-					"if=none,cache=unsafe,format=qcow2,discard=unmap,file=output-qemu/demo-centos7-minimal.qcow2"
-				]
-			 ],
+					"-smp", "2"
+				],
+				[	
+					"-m", "2048M"
+				]			 ],
 			"http_directory": "./",
 			"vm_name": "demo-centos7-minimal",
 			"boot_command":
