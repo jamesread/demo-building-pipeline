@@ -19,7 +19,7 @@
 				"-nographic",
 				[
 				"-drive",
-				"if=none,cache=unsafe,id=drive0,discard=unmap,file=output-qcow2/disk.qcow2"
+				"if=none,cache=unsafe,id=drive0,discard=unmap,file=output-qemu/demo-centos7-minimal.qcow2"
 				]
 			 ],
 			"http_directory": "./",
