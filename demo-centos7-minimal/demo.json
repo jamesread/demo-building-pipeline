@@ -17,10 +17,6 @@
 			"boot_wait": "10s",
 			"qemuargs": [ 
 				"-nographic",
-				[
-				"-drive",
-				"if=none,cache=unsafe,id=drive-ide0-0-0,discard=unmap,file=output-qemu/demo-centos7-minimal.qcow2"
-				]
 			 ],
 			"http_directory": "./",
 			"vm_name": "demo-centos7-minimal",
