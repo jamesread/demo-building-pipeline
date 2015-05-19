@@ -18,6 +18,7 @@
 			"qemuargs": [ "-nographic" ],
 			"http_directory": "./",
 			"disk_interface": "waffles",
+			"vm_name": "demo-centos7-minimal",
 			"boot_command":
 			[
 				"<tab><up> append console=ttyS0,115200n8 rd.live.check=0 text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/demo.ks<enter><wait>"

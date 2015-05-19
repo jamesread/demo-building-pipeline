@@ -10,7 +10,7 @@ parser = argparse.ArgumentParser();
 parser.add_argument("-d", "--demo", required = False, default = False)
 args = parser.parse_args()
 
-everythingOkay = True
+testFailureCount = 0
 
 def red(txt):
 	return "\033[31m" + txt + "\033[0m"
@@ -19,7 +19,7 @@ def green(txt):
 	return "\033[32m" + txt + "\033[0m"
 
 def test(result, comment, commentForFail = None):
-	global everythingOkay
+	global testFailureCount
 
 	if result:
 		resultString = green("PASS")
@@ -29,7 +29,7 @@ def test(result, comment, commentForFail = None):
 
 		resultString = red("FAIL")
 
-		everythingOkay = False
+		testFailureCount = testFailureCount + 1
 	
 	print "[ ", resultString, " ] ", comment
 
@@ -50,7 +50,15 @@ def lintQemuGraphics(demoConfig):
 	except:
 		test(False, "No Qemu args have been specified, wont be able to monitor the console")
 
-def lintDemoConfig(demoConfig):
+def lintDemoConfig(demoConfig, demoDirectory):
+	try:
+		test(demoConfig['builders'][0]['vm_name'] == demoDirectory,
+			"The vm_name is matches the directory name.",
+			"The vm_name should be the same as the directory name, it should be: " + demoDirectory
+		)
+	except: 
+		test(False, "vm_name not defined, it should be: '" + demoDirectory + "'")
+
 	try: 
 		test(demoConfig['builders'][0]['type'] == "qemu", 
 			"The first builder is a 'qemu' builder", 
@@ -86,7 +94,7 @@ def lintDemoJson(demoDirectory):
 
 		test(True, "Demo JSON is valid.")
 
-		lintDemoConfig(demoJson)
+		lintDemoConfig(demoJson, demoDirectory)
 	except Exception as e:
 		test(False, "Demo config exists, but could not be loaded, is it valid JSON?")
 		print e
@@ -111,5 +119,6 @@ else:
 		if isdir(f) and f[0] != ".":
 			lintDemo(f)
 
-if not everythingOkay:
+if testFailureCount > 0:
+	print red("There were " + str(testFailureCount) + " test failures.")
 	sys.exit(1)
