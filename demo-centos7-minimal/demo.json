@@ -24,7 +24,7 @@
 				],
 				[
 					"-device",
-					"virtio-scsi-pci",
+					"virtio-scsi-pci"
 				],
 				[
 					"-drive",
