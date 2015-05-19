@@ -19,9 +19,6 @@ logvol / --fstype=ext4 --size 1024 --grow --name lv_root --vgname vg_root
 bootloader --location=mbr --timeout 10
 
 %packages
-vim-enhanced
-git
-wget
 ruby
 %end
 
