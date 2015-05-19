@@ -17,7 +17,6 @@
 			"boot_wait": "10s",
 			"qemuargs": [ "-nographic" ],
 			"http_directory": "./",
-			"disk_interface": "waffles",
 			"vm_name": "demo-centos7-minimal",
 			"boot_command":
 			[
