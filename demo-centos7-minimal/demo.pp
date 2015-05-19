@@ -1,7 +1,6 @@
-package { [ 
-	"httpd",
-	"mariadb-server" 
+service { [ 
+	"sshd",
 	] :
-	ensure => installed,
-	allow_virtual => true
+	ensure => running,
+	enable => true,
 }
