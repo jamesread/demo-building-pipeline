@@ -9,6 +9,7 @@ exec { "/usr/bin/rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.ke
 package { [ 
 	"httpd",
 	"mariadb-server",
+	"java",
 	"jenkins"
 	] :
 	ensure => installed,
