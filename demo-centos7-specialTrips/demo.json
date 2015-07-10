@@ -1,0 +1,45 @@
+{
+	"variables": {
+		"ISO_DIRECTORY": ""
+	},
+	"builders": [
+		{
+			"type": "qemu",
+			"disk_image": true,
+			"iso_url": "{{user `ISO_DIRECTORY` }}/demo-centos7.qcow2",
+			"iso_checksum": "",
+			"iso_checksum_type": "none",
+			"headless": true,
+			"ssh_wait_timeout": "30m",
+			"ssh_username": "root",
+			"ssh_password": "password",
+			"disk_size": 10000,
+			"qemuargs": [["-m", "2048M"]],
+			"boot_wait": "10s",
+			"qemuargs": [ "-nographic" ],
+			"vm_name": "demo-centos7-specialTrips",
+			"http_directory": "./",
+			"boot_command":
+			[
+				"<enter>"
+			]
+		}
+	],
+	"provisioners": [
+		{
+			"type": "file",
+			"source": "master.zip",
+			"destination": "/opt/"
+		},
+		{
+			"type": "file",
+			"source": "demo.pp",
+			"destination": "/root/demo.pp"
+		},
+		{
+			"type": "puppet-masterless",
+			"manifest_file": "demo.pp"
+		}
+
+	]
+}

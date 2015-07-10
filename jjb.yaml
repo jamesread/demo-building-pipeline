@@ -18,6 +18,9 @@
             #export PACKER_LOG_FILE={name}/packer.log
             export PATH=/opt/packer/:$PATH
 
+            # Custom demo scripts should be as part of a makefile
+            make 
+
             cd {name}
             rm -rf output-qemu
             /opt/packer/packer build -var 'ISO_DIRECTORY=/isos' demo.json
@@ -28,7 +31,7 @@
         - ssh:
             site: 'demobuilder-master'
             source: '{name}/output-qemu/*.qcow2'
-            target: '{name}'
+            target: '/'
             use-pty: true
             fail-on-error: true
             remove-prefix: '{name}/output-qemu'
