@@ -23,7 +23,7 @@
 					"-m", "2048M"
 				]			 ],
 			"http_directory": "./",
-			"vm_name": "demo-centos7-minimal",
+			"vm_name": "demo-centos7-atomic",
 			"boot_command":
 			[
 				"<tab><up> append console=ttyS0,115200n8 rd.live.check=0 text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/demo.ks<enter><wait>"
