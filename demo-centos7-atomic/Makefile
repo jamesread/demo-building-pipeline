@@ -1,0 +1,4 @@
+default:
+	hostname
+
+PHONY: default
