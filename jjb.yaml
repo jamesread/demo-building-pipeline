@@ -17,11 +17,12 @@
             export PACKER_LOG=yes
             #export PACKER_LOG_FILE={name}/packer.log
             export PATH=/opt/packer/:$PATH
+ 
+            cd {name}
 
             # Custom demo scripts should be as part of a makefile
             make 
 
-            cd {name}
             rm -rf output-qemu
             /opt/packer/packer build -var 'ISO_DIRECTORY=/isos' demo.json
     wrappers:

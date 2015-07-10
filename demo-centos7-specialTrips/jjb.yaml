@@ -1,5 +1,5 @@
 - project: 
-    name: demo-centos7-ha
+    name: demo-centos7-specialTrips
 
     jobs: 
         - 'build-{name}'
