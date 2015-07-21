@@ -1,5 +1,5 @@
 - job-template:
-    name: build-{name}
+    name: build-{name}-qcow2
     project-type: freestyle
     node: has-kvm
     logrotate:
@@ -24,7 +24,7 @@
             make 
 
             rm -rf output-qemu
-            /opt/packer/packer build -var 'ISO_DIRECTORY=/isos' demo.json
+            /opt/packer/packer build -var 'ISO_DIRECTORY=/isos' --only qemu demo.json
     wrappers:
         - ansicolor            
 
@@ -36,6 +36,83 @@
             use-pty: true
             fail-on-error: true
             remove-prefix: '{name}/output-qemu'
+
+- job-template:
+    name: build-{name}-container
+    project-type: freestyle
+    logrotate:
+        numToKeep: 3
+
+    scm:
+        - git:
+            skip-tag: false
+            url: https://github.com/jamesread/demo-vm-images.git
+            triggers:
+                - pollscm: '@hourly'
+    builders:
+        - shell: |
+            echo `hostname`
+            export PACKER_LOG=yes
+            #export PACKER_LOG_FILE={name}/packer.log
+            export PATH=/opt/packer/:$PATH
+ 
+            cd {name}
+
+            # Custom demo scripts should be as part of a makefile
+            make 
+
+            rm -rf output-docker
+            /opt/packer/packer build -var 'ISO_DIRECTORY=/isos' --only docker demo.json
+    wrappers:
+        - ansicolor            
+
+    publishers:
+        - ssh:
+            site: 'demobuilder-master'
+            source: '{name}/output-docker/*.tar'
+            target: '/'
+            use-pty: true
+            fail-on-error: true
+            remove-prefix: '{name}/output-docker'
+
+- job-template:
+    name: build-{name}-vmdk
+    project-type: freestyle
+    logrotate:
+        numToKeep: 3
+
+    scm:
+        - git:
+            skip-tag: false
+            url: https://github.com/jamesread/demo-vm-images.git
+            triggers:
+                - pollscm: '@hourly'
+    builders:
+        - shell: |
+            echo `hostname`
+            export PACKER_LOG=yes
+            #export PACKER_LOG_FILE={name}/packer.log
+            export PATH=/opt/packer/:$PATH
+ 
+            cd {name}
+
+            # Custom demo scripts should be as part of a makefile
+            make 
+
+            rm -rf output-docker
+            /opt/packer/packer build -var 'ISO_DIRECTORY=/isos' --only vmware-iso demo.json
+    wrappers:
+        - ansicolor            
+
+    publishers:
+        - ssh:
+            site: 'demobuilder-master'
+            source: '{name}/output-docker/*.tar'
+            target: '/'
+            use-pty: true
+            fail-on-error: true
+            remove-prefix: '{name}/output-docker'
+
 
 - job: 
     name: demolint

@@ -2,6 +2,6 @@
     name: demo-centos7-ha
 
     jobs: 
-        - 'build-{name}'
-
-
+        - build-{name}-qcow2
+        - build-{name}-container
+        - build-{name}-vmdk

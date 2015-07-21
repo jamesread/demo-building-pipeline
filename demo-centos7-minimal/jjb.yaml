@@ -2,6 +2,6 @@
     name: demo-centos7-minimal
 
     jobs: 
-        - 'build-{name}'
+        - build-{name}-qcow2
 
 

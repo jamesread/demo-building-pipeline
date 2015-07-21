@@ -1,4 +1,4 @@
 - project:
     name: demo-centos6-minimal
     jobs:
-        - build-{name}
+        - build-{name}-qcow2

@@ -2,6 +2,6 @@
     name: demo-rhel7-minimal
 
     jobs: 
-        - 'build-{name}'
+        - build-{name}-qcow2
 
 
