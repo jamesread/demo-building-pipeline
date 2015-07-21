@@ -26,7 +26,7 @@
 		},
 		{
 			"type": "docker",
-			"image": "centos7"
+			"image": "registry.hub.docker.com/centos7"
 		}
 	],
 	"provisioners": [
