@@ -23,6 +23,10 @@
 			[
 				"<enter>"
 			]
+		},
+		{
+			"type": "docker",
+			"image": "centos7"
 		}
 	],
 	"provisioners": [
